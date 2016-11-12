@@ -19,26 +19,36 @@
 
       <div class="row">
         <form class="col s12">
+
           <div class="row">
+
+            <!-- Email -->
             <div class="input-field col s6">
-              <input id="username" type="text" class="validate">
-              <label for="username">Email</label>
+              <input id="email" type="email" class="validate" required="" aria-required="true">
+              <label for="email">Email</label>
             </div>
+
+            <!-- Password -->
             <div class="input-field col s6">
-              <input id="password" type="text" class="validate">
+              <input id="password" type="password" class="validate" required="" aria-required="true">
               <label for="password">Password</label>
             </div>
           </div>
+
           <div class="row">
+
+            <!-- Sign Up Button -->
             <div class="input-field col s6 right-align">
-              <a class="btn waves-effect waves-light btn-large" name="action">Register
+              <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Sign Up
                 <i class="material-icons right">perm_identity</i>
-              </a>
+              </button>
             </div>
+
+            <!-- Sign In Button -->
             <div class="input-field col s6 left-align">
-              <a class="btn waves-effect waves-light btn-large" name="action">Sign In
+              <button class="btn waves-effect waves-light btn-large" type="submit" name="action">Sign In
                 <i class="material-icons right">vpn_key</i>
-              </a>
+              </button>
             </div>
           </div>
         </form>
