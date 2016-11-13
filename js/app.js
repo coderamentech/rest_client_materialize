@@ -11,15 +11,19 @@
 function App() {
 }
 
-/**
- * Sign-up value
- * @type {string}
- */
+//-- Login Layer Constants --/
 
 /**
- * Sign-in value
+ * Login layer ID
  * @type {string}
  */
+App.LOGIN_LAYER_ID = '#login-layer';
+
+/**
+ * Show Sign-up ID
+ * @type {string}
+ */
+App.SHOW_SIGNUP_ID = '#show-signup';
 
 /**
  * Login form ID
@@ -27,12 +31,25 @@ function App() {
  */
 App.LOGIN_FORM_ID = '#login-form';
 
+
+//-- Sign Up Layer Constants --/
+
+/**
+ * Sign up layer ID
+ * @type {string}
+ */
+App.SIGNUP_LAYER_ID = '#signup-layer';
+
+//-- Static Properties --/
+
 /**
  * Document reference
  * @type {Document}
  */
 App.doc = null;
 
+
+//-- Static Methods --/
 
 /**
  * Initializes the application
@@ -54,14 +71,13 @@ App.initializeEventHandlers = function() {
     // change browser content based on form action
     event.preventDefault();
 
+    App.signIn();
   });
 
-  // Make submit buttons change the submit mode value accordingly
-  $('button[type=submit]').click(function (event) {
-    // Change submit value based on submit button' value
-    App.submitMode = $(this).val();
+  $(App.SHOW_SIGNUP_ID).click(function() {
+    $(App.SIGNUP_LAYER_ID).show();
+    $(App.LOGIN_LAYER_ID).hide();
   });
-
 };
 
 App.signUp = function() {
