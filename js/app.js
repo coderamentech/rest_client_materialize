@@ -34,6 +34,8 @@ App.LOGIN_FORM_ID = '#login-form';
 
 //-- Sign Up Layer Constants --/
 
+App.CANCEL_SIGNUP_ID = '#cancel-signup';
+
 /**
  * Sign up layer ID
  * @type {string}
@@ -66,6 +68,8 @@ App.initialize = function(doc) {
  */
 App.initializeEventHandlers = function() {
 
+  //-- Login Layer --//
+
   $(App.LOGIN_FORM_ID).submit(function (event) {
     // Prevent normal browser behavior which is to
     // change browser content based on form action
@@ -75,8 +79,16 @@ App.initializeEventHandlers = function() {
   });
 
   $(App.SHOW_SIGNUP_ID).click(function() {
-    $(App.SIGNUP_LAYER_ID).show();
     $(App.LOGIN_LAYER_ID).hide();
+    $(App.SIGNUP_LAYER_ID).show();
+  });
+
+
+  //-- Signup Layer --//
+
+  $(App.CANCEL_SIGNUP_ID).click(function() {
+    $(App.SIGNUP_LAYER_ID).hide();
+    $(App.LOGIN_LAYER_ID).show();
   });
 };
 
