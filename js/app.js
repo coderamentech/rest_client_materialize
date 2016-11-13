@@ -15,13 +15,11 @@ function App() {
  * Sign-up value
  * @type {string}
  */
-App.SIGN_UP_VALUE = 'sign-up';
 
 /**
  * Sign-in value
  * @type {string}
  */
-App.SIGN_IN_VALUE = 'sign-in';
 
 /**
  * Login form ID
@@ -35,11 +33,6 @@ App.LOGIN_FORM_ID = '#login-form';
  */
 App.doc = null;
 
-/**
- * The submit mode chosen by user.
- * @type {string}
- */
-App.submitMode = null;
 
 /**
  * Initializes the application
@@ -61,12 +54,6 @@ App.initializeEventHandlers = function() {
     // change browser content based on form action
     event.preventDefault();
 
-    // Invoke appropriate method based on submit mode
-    switch (App.submitMode)
-    {
-      case App.SIGN_IN_VALUE: App.signIn(); break;
-      case App.SIGN_UP_VALUE: App.signUp(); break;
-    }
   });
 
   // Make submit buttons change the submit mode value accordingly
