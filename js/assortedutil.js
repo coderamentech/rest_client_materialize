@@ -43,20 +43,53 @@ function AssortedUtil() {
  * @param {string} url destination URL
  * @param {string} method HTTP verb
  * @param {string} data data to be submitted
- * @param {Function} doneHandler callback function that accepts
- *     the followin parameters: text
+ * @param {Function} successHandler callback function that accepts
+ *     the followin parameters: data, textStatus, xhr
  * @param {Function} failHandler callback function that accepts
  *     the following parameters: xhr object, status request
  */
-AssortedUtil.transmit = function(url, method, data, doneHandler, failHandler) {
+AssortedUtil.transmit = function(url, method, data, successHandler, failHandler) {
+
+  AssortedUtil.transmitWithBasicAuth(url, method, data, null,
+    null, successHandler, failHandler);
+}
+
+/**
+ * Performs AJAX transmission.
+ * @param {string} url destination URL
+ * @param {string} method HTTP verb
+ * @param {string} data data to be submitted
+ * @param {string} username BASIC AUTH username
+ * @param {string} password BASIC AUTH password
+ * @param {Function} successHandler callback function that accepts
+ *     the followin parameters: data, textStatus, xhr
+ * @param {Function} failHandler callback function that accepts
+ *     the following parameters: xhr object, status request
+ */
+AssortedUtil.transmitWithBasicAuth = function(url, method, data, username,
+    password, successHandler, failHandler) {
 
   var request = $.ajax({
     url: url,
     method: method,
     data: data,
-    dataType: "text"
+    username: username,
+    password: password,
+    crossDomain: true,
+    dataType: "text",
   });
 
-  request.done(doneHandler);
+  if (username && password) {
+    request.xhrFields = { withCredentials: true };
+
+    request.beforeSend = function (xhr) {
+        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(username + ':' + password));
+    };
+    request.headers = {'Authorization': 'Basic ' + btoa(username + ':' + password)};
+
+    alert('request.headers.Authorization');
+  }
+
+  request.success(successHandler);
   request.fail(failHandler);
 }
