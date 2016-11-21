@@ -135,6 +135,7 @@ App.signIn = function() {
   var password = form.find('input[name="password"]').val();
 
   var data = {'email': email, 'password': password};
+  data = JSON.stringify(data);
   AssortedUtil.transmit(App.URL_SESSIONS, 'POST', data,
     App.handleSignInSuccess_, App.handleSignInFailure_);
 };
