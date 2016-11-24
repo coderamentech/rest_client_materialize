@@ -48,9 +48,9 @@ function AssortedUtil() {
  * @param {Function} failHandler callback function that accepts
  *     the following parameters: xhr object, status request
  */
-AssortedUtil.transmit = function(url, method, data, successHandler, failHandler) {
+AssortedUtil.transmit = function(url, method, data, contentType, successHandler, failHandler) {
 
-  AssortedUtil.transmitWithBasicAuth(url, method, data, null,
+  AssortedUtil.transmitWithBasicAuth(url, method, data, contentType, null,
     null, successHandler, failHandler);
 }
 
@@ -66,8 +66,8 @@ AssortedUtil.transmit = function(url, method, data, successHandler, failHandler)
  * @param {Function} failHandler callback function that accepts
  *     the following parameters: xhr object, status request
  */
-AssortedUtil.transmitWithBasicAuth = function(url, method, data, username,
-    password, successHandler, failHandler) {
+AssortedUtil.transmitWithBasicAuth = function(url, method, data, contentType,
+    username, password, successHandler, failHandler) {
 
   var request = $.ajax({
     url: url,
@@ -76,7 +76,7 @@ AssortedUtil.transmitWithBasicAuth = function(url, method, data, username,
     username: username,
     password: password,
     crossDomain: true,
-    dataType: "text",
+    contentType: contentType,
   });
 
   if (username && password) {

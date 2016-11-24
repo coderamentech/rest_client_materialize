@@ -54,7 +54,9 @@ App.CANCEL_USER_LISTING_ID = '#cancel-user-listing';
 
 //-- URL Constants --/
 
-App.URL = 'http://10.11.15.93:8000/app.php';
+//App.URL = 'http://10.11.15.43:8000/app.php';
+App.URL = 'http://10.11.15.188:8002';
+
 
 App.URL_SESSIONS = App.URL + '/sessions';
 
@@ -136,7 +138,7 @@ App.signIn = function() {
 
   var data = {'email': email, 'password': password};
   data = JSON.stringify(data);
-  AssortedUtil.transmit(App.URL_SESSIONS, 'POST', data,
+  AssortedUtil.transmit(App.URL_SESSIONS, 'POST', data, 'application/json',
     App.handleSignInSuccess_, App.handleSignInFailure_);
 };
 
@@ -165,7 +167,7 @@ App.handleSignInFailure_ = function() {
  * @see handlefetchUsersSuccess_()
  */
 App.fetchUsers = function() {
-  AssortedUtil.transmit(App.URL_USERS, 'GET', null,
+  AssortedUtil.transmit(App.URL_USERS, 'GET', null, null,
     App.handlefetchUsersSuccess_, null);
 };
 
