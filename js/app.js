@@ -102,6 +102,7 @@ App.initializeEventHandlers = function() {
   $(App.SHOW_SIGNUP_ID).click(function() {
     $(App.LOGIN_LAYER_ID).hide();
     $(App.SIGNUP_LAYER_ID).show();
+    event.preventDefault();
   });
 
 
@@ -110,6 +111,7 @@ App.initializeEventHandlers = function() {
   $(App.CANCEL_SIGNUP_ID).click(function() {
     $(App.SIGNUP_LAYER_ID).hide();
     $(App.LOGIN_LAYER_ID).show();
+    event.preventDefault();
   });
 
 
@@ -118,6 +120,7 @@ App.initializeEventHandlers = function() {
   $(App.CANCEL_USER_LISTING_ID).click(function() {
     $(App.USER_LISTING_LAYER_ID).hide();
     $(App.LOGIN_LAYER_ID).show();
+    event.preventDefault();
   });
 };
 
